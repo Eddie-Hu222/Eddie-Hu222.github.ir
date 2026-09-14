@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yuchen Hu — Business Analytics &amp; Information Technology</title>
+<meta name="description" content="Yuchen Hu — Rutgers Business School BAIT student working on energy market analytics, solar resource assessment, and rules-based quantitative research.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23cc0033'/><text x='16' y='24' text-anchor='middle' font-size='22' font-family='Georgia,serif' fill='white'>R</text></svg>">
+
+<style>
+/* =========================================================================
+   Yuchen Hu — portfolio.  Single file: all styles inline, no dependencies.
+   Palette: Rutgers Scarlet #CC0033.  Light default, dark via media query.
+   ========================================================================= */
+
+:root{
+  --bg:#fbfaf7; --bg-alt:#f3f1ec; --surface:#fff;
+  --ink:#1a1814; --ink-soft:#57524a; --ink-faint:#8b847a; --rule:#e2ded5;
+  --accent:#cc0033; --accent-dp:#a3002a; --accent-bg:#fdecf0; --on-accent:#fff;
+  --shadow:0 1px 2px rgba(26,24,20,.04),0 8px 24px -12px rgba(26,24,20,.12);
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --wrap:980px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#100f0d; --bg-alt:#171613; --surface:#1b1a16;
+    --ink:#ece9e2; --ink-soft:#a9a399; --ink-faint:#746e64; --rule:#2c2a25;
+    --accent:#ff5a70; --accent-dp:#ff8093; --accent-bg:#2e1017; --on-accent:#2b0710;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+     font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 1.5rem}
+a{color:var(--accent)}
+.topbar{height:3px;background:var(--accent)}
+.skip{position:absolute;left:-9999px;background:var(--accent);color:var(--on-accent);
+      padding:.6rem 1rem;z-index:100;border-radius:0 0 6px 0}
+.skip:focus{left:0;top:0}
+
+/* ---- nav ---- */
+.nav{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--rule);
+     background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px)}
+.nav-inner{max-width:var(--wrap);margin:0 auto;padding:.85rem 1.5rem;
+           display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-mark{display:flex;align-items:center;gap:.55rem;font-size:.9rem;font-weight:600;
+          letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.nav-mark:hover{color:var(--accent)}
+.nav nav{display:flex;gap:1.5rem;flex-wrap:wrap}
+.nav nav a{font-size:.875rem;font-weight:500;color:var(--ink-soft);text-decoration:none;
+           padding:.15rem 0;border-bottom:1px solid transparent}
+.nav nav a:hover{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* Scarlet "R" badge — an original mark in Rutgers Scarlet indicating the author's
+   school. Not a reproduction of the Rutgers / RBS trademark. */
+.rmark{display:inline-flex;align-items:center;justify-content:center;
+       background:var(--accent);color:var(--on-accent);font-family:var(--serif);
+       line-height:1;border-radius:5px;flex:none;user-select:none}
+.rmark-sm{width:26px;height:26px;font-size:1.1rem}
+.rmark-lg{width:36px;height:36px;font-size:1.5rem}
+
+/* ---- hero ---- */
+.hero{padding:clamp(3rem,9vw,5.5rem) 0 clamp(3rem,8vw,5rem)}
+.hero-top{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
+/* Two layered backgrounds: the photo sits on top, a scarlet "YH" monogram sits
+   underneath. If headshot.jpg is missing the monogram shows — never a broken image. */
+.headshot{width:104px;height:104px;border-radius:50%;flex:none;
+  border:3px solid var(--accent);box-shadow:var(--shadow);
+  background-image:url("headshot.jpg"),url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 104'><rect width='104' height='104' fill='%23cc0033'/><text x='52' y='69' text-anchor='middle' font-size='40' font-family='Georgia,serif' fill='white'>YH</text></svg>");
+  background-size:cover,cover;background-position:center,center;background-repeat:no-repeat}
+.brand-line{display:flex;align-items:center;gap:.7rem}
+.brand-text{font-family:var(--mono);font-size:.73rem;letter-spacing:.07em;
+            text-transform:uppercase;color:var(--ink-faint);line-height:1.45;margin:0}
+.brand-text strong{display:block;color:var(--ink-soft);font-weight:600}
+.hook{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,7vw,4.2rem);
+      line-height:1.05;letter-spacing:-.02em;margin:0 0 1.3rem}
+.statement{font-size:clamp(1.18rem,2.5vw,1.5rem);line-height:1.5;max-width:54ch;
+           margin:0 0 1.85rem;padding-left:1.25rem;border-left:3px solid var(--accent);color:var(--ink)}
+.hook-sub{font-size:clamp(1.02rem,1.9vw,1.12rem);color:var(--ink-soft);
+          max-width:58ch;margin:0 0 2.5rem}
+.hook-sub em{font-style:italic;color:var(--accent);white-space:nowrap}
+
+/* ---- buttons ---- */
+.cta{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;font-size:.9rem;font-weight:500;text-decoration:none;
+     color:var(--ink);background:var(--surface);border:1px solid var(--rule);
+     border-radius:7px;padding:.62rem 1.15rem;
+     transition:border-color .15s,transform .15s,color .15s}
+.btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn-primary:hover{background:var(--accent-dp);border-color:var(--accent-dp);color:var(--on-accent)}
+
+/* ---- sections ---- */
+.section{padding:clamp(3.5rem,8vw,5.5rem) 0;border-top:1px solid var(--rule)}
+.section-alt{background:var(--bg-alt)}
+.section-head{margin-bottom:2.75rem}
+.section-head .num{font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;
+                   color:var(--accent);display:block;margin-bottom:.5rem}
+.section-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,4.2vw,2.6rem);
+                 letter-spacing:-.01em;margin:0 0 .6rem}
+.lede{color:var(--ink-soft);max-width:54ch;margin:0;font-size:1.02rem}
+
+/* ---- skills ---- */
+.skill-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.skill-card{background:var(--surface);border:1px solid var(--rule);border-radius:11px;
+            padding:1.4rem 1.4rem 1.5rem;box-shadow:var(--shadow)}
+.skill-card h3{font-size:1rem;font-weight:600;margin:0 0 .3rem;letter-spacing:-.005em}
+.skill-note{font-size:.84rem;color:var(--ink-faint);margin:0 0 1.1rem;font-style:italic}
+.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.4rem}
+.tags li{font-family:var(--mono);font-size:.75rem;line-height:1.5;color:var(--ink-soft);
+         background:var(--bg-alt);border:1px solid var(--rule);border-radius:5px;padding:.22rem .55rem}
+.section-alt .tags li{background:var(--bg)}
+
+/* ---- projects ---- */
+.proj-list{display:flex;flex-direction:column;gap:1.25rem}
+.proj{background:var(--surface);border:1px solid var(--rule);border-radius:13px;
+      overflow:hidden;box-shadow:var(--shadow);transition:border-color .18s}
+.proj:hover{border-color:color-mix(in srgb,var(--accent) 40%,var(--rule))}
+.proj-meta{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem;padding:.85rem 1.6rem;
+           border-bottom:1px solid var(--rule);background:var(--bg-alt)}
+.badge{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;
+       color:var(--accent);background:var(--accent-bg);border-radius:4px;padding:.2rem .5rem}
+.proj-org{font-size:.8rem;color:var(--ink-faint)}
+.proj-body{padding:1.6rem}
+.proj-body h3{font-size:clamp(1.2rem,2.6vw,1.45rem);font-weight:600;letter-spacing:-.012em;
+              margin:0 0 .6rem;line-height:1.25}
+.proj-hook{font-family:var(--serif);font-size:clamp(1.08rem,2.3vw,1.3rem);line-height:1.4;
+           color:var(--ink);margin:0 0 1.3rem;max-width:48ch}
+.proj-points{margin:0 0 1.3rem;padding:0;list-style:none}
+.proj-points li{position:relative;padding-left:1.4rem;margin-bottom:.7rem;
+                color:var(--ink-soft);font-size:.945rem;max-width:68ch}
+.proj-points li::before{content:"";position:absolute;left:.3rem;top:.68em;width:5px;height:5px;
+                        border-radius:50%;background:var(--accent)}
+.proj-points strong{color:var(--ink);font-weight:600}
+.tags-stack{margin-bottom:1.3rem}
+.proj-note{font-size:.82rem;color:var(--ink-faint);border-left:2px solid var(--rule);
+           padding-left:.8rem;margin:0 0 1.3rem;max-width:62ch}
+
+/* ---- expandable case study ---- */
+details.case{border-top:1px solid var(--rule);margin-top:1.3rem;padding-top:1.1rem}
+details.case summary{cursor:pointer;list-style:none;font-size:.9rem;font-weight:600;
+                     color:var(--accent);display:inline-flex;align-items:center;gap:.45rem}
+details.case summary::-webkit-details-marker{display:none}
+details.case summary::after{content:"▸";transition:transform .18s;display:inline-block}
+details.case[open] summary::after{transform:rotate(90deg)}
+details.case summary:hover{color:var(--accent-dp)}
+.case-body{padding-top:1.2rem;max-width:70ch}
+.case-body h4{font-size:.95rem;font-weight:600;color:var(--ink);margin:1.6rem 0 .5rem}
+.case-body h4:first-child{margin-top:0}
+.case-body p{color:var(--ink-soft);font-size:.925rem;margin:0 0 .9rem}
+.case-body ul{margin:0 0 1.1rem;padding-left:1.2rem}
+.case-body li{color:var(--ink-soft);font-size:.925rem;margin-bottom:.45rem}
+.case-body strong{color:var(--ink);font-weight:600}
+.case-body em{font-style:italic}
+.case-body code{font-family:var(--mono);font-size:.84em;background:var(--bg-alt);
+                border:1px solid var(--rule);border-radius:4px;padding:.1em .35em}
+.case-body pre{font-family:var(--mono);font-size:.78rem;line-height:1.6;background:var(--bg-alt);
+               border:1px solid var(--rule);border-radius:9px;padding:.95rem 1.1rem;
+               overflow-x:auto;margin:0 0 1.2rem;color:var(--ink-soft)}
+.case-body pre code{background:none;border:0;padding:0;font-size:inherit}
+.callout{background:var(--accent-bg);border:1px solid color-mix(in srgb,var(--accent) 28%,transparent);
+         border-radius:9px;padding:1rem 1.2rem;margin:0 0 1.3rem}
+.callout p:last-child{margin-bottom:0}
+.table-scroll{overflow-x:auto;margin:0 0 1.2rem}
+.case-body table{border-collapse:collapse;width:100%;font-size:.85rem;min-width:440px}
+.case-body th,.case-body td{text-align:left;padding:.5rem .75rem;border-bottom:1px solid var(--rule);
+                            color:var(--ink-soft)}
+.case-body th{font-weight:600;color:var(--ink);font-size:.78rem;letter-spacing:.02em}
+.case-body td:first-child{color:var(--ink)}
+
+/* ---- contact + footer ---- */
+.contact-lede{font-size:1.1rem;max-width:52ch;margin-bottom:2rem}
+.contact-lede strong{color:var(--ink);font-weight:600}
+.foot{border-top:1px solid var(--rule);padding:2rem 0}
+.foot-inner{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between;
+            font-size:.82rem;color:var(--ink-faint)}
+.foot p{margin:0}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-mark" href="#top">
+      <span class="rmark rmark-sm" aria-hidden="true">R</span>
+      <span>Yuchen Hu</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="#statement">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ==================== PERSONAL STATEMENT ==================== -->
+  <section id="top" class="hero">
+    <div class="wrap">
+
+      <div class="hero-top">
+        <div class="headshot" role="img" aria-label="Portrait of Yuchen Hu"></div>
+        <div class="brand-line">
+          <span class="rmark rmark-lg" aria-hidden="true">R</span>
+          <p class="brand-text">
+            <strong>Rutgers Business School</strong>
+            Business Analytics &amp; Information Technology
+          </p>
+        </div>
+      </div>
+
+      <h1 class="hook">Yuchen&nbsp;Hu</h1>
+
+      <p class="statement" id="statement">
+        I&rsquo;m a Business Analytics &amp; Information Technology student at Rutgers
+        Business School who turns messy energy and market data into decisions
+        people can defend.
+      </p>
+
+      <p class="hook-sub">
+        Last summer I checked the coordinates behind 91 rooftop solar projects and found
+        42 that were wrong — one logged <em>1,585&nbsp;kilometers</em> from the factory it
+        belonged to. Valid latitude, valid longitude, completely wrong place. Finding that
+        kind of number is the part of analytics I actually like.
+      </p>
+
+      <div class="cta">
+        <a class="btn btn-primary" href="#projects">See the work</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+        <a class="btn" href="mailto:hueddie7@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/yuchen-hu-18a055380" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Eddie-Hu222" target="_blank" rel="noopener">GitHub</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section id="skills" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">01</span>
+        <h2>Skills</h2>
+        <p class="lede">What I bring to a data or analyst desk on day one — and where I&rsquo;m still building.</p>
+      </div>
+
+      <div class="skill-grid">
+        <article class="skill-card">
+          <h3>Analytics &amp; Programming</h3>
+          <p class="skill-note">Where most of my hours go.</p>
+          <ul class="tags">
+            <li>Python</li><li>pandas</li><li>DuckDB</li><li>Plotly</li>
+            <li>Streamlit</li><li>SQL</li><li>Excel modeling</li><li>Git &amp; GitHub</li>
+          </ul>
+        </article>
+
+        <article class="skill-card">
+          <h3>Data Engineering &amp; QA</h3>
+          <p class="skill-note">Getting the data in, and proving it&rsquo;s right.</p>
+          <ul class="tags">
+            <li>REST / JSON API ingestion</li><li>CSV &amp; XLSX pipelines</li>
+            <li>Local caching &amp; concurrency</li><li>Reconciliation &amp; audit</li>
+            <li>Geospatial coordinate validation</li>
+          </ul>
+        </article>
+
+        <article class="skill-card">
+          <h3>Domain Knowledge</h3>
+          <p class="skill-note">Built on a summer inside China&rsquo;s power market.</p>
+          <ul class="tags">
+            <li>Day-ahead &amp; real-time spot pricing</li><li>Nodal / zonal price structure</li>
+            <li>Transmission tariffs &amp; settlement</li><li>Distributed PV resource assessment</li>
+            <li>Equity market structure</li>
+          </ul>
+        </article>
+
+        <article class="skill-card">
+          <h3>Communication &amp; Workflow</h3>
+          <p class="skill-note">Analysis nobody reads is analysis nobody used.</p>
+          <ul class="tags">
+            <li>Bilingual English / Mandarin</li><li>Technical writing &amp; reporting</li>
+            <li>Stakeholder dashboards</li><li>AI-assisted development (Claude&nbsp;Code)</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROJECTS ==================== -->
+  <section id="projects" class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">02</span>
+        <h2>Projects</h2>
+        <p class="lede">Three things I built with real data. Each one started because a number looked wrong.</p>
+      </div>
+
+      <div class="proj-list">
+
+        <!-- ---------- P1 ---------- -->
+        <article class="proj">
+          <div class="proj-meta">
+            <span class="badge">Internship &middot; Summer 2026</span>
+            <span class="proj-org">Shanghai Hongzuo Energy</span>
+          </div>
+          <div class="proj-body">
+            <h3>China Power Spot-Market Analytics</h3>
+            <p class="proj-hook">Fourteen provinces publish an electricity price every fifteen minutes. Almost nobody reads them side by side.</p>
+            <ul class="proj-points">
+              <li>Consolidated day-ahead and real-time clearing prices across <strong>14+ provincial markets</strong> — Guangdong, Shandong, Jiangsu, Zhejiang, Anhui, Shanxi, Ningxia, Xinjiang, Guangxi, Guizhou, Liaoning, Chongqing, Jiangxi and Hebei South — into one comparable time series.</li>
+              <li>Mapped Guangdong&rsquo;s raw nodal price feed down to <strong>city level</strong>, so a plant manager could find their own node instead of reading a list of code names.</li>
+              <li>Built a <strong>Streamlit tool</strong> that ingests a price CSV, auto-detects day-ahead vs. real-time, charts the spread, and exports a standalone HTML report a non-technical colleague can open offline.</li>
+              <li>Compared <strong>3rd vs. 4th regulatory-cycle transmission tariffs</strong> to show where industrial retail costs actually move when the schedule changes.</li>
+            </ul>
+            <ul class="tags tags-stack">
+              <li>Python</li><li>pandas</li><li>DuckDB</li><li>Plotly</li><li>Streamlit</li>
+            </ul>
+            <p class="proj-note">Client load data is confidential and is not published. What follows is methodology, data model and tool design.</p>
+
+            <details class="case">
+              <summary>Read the full case study</summary>
+              <div class="case-body">
+
+                <h4>The problem</h4>
+                <p>China&rsquo;s electricity market is not one market. It is a couple dozen provincial markets, each with its own trading center, its own file format, its own idea of what a &ldquo;price&rdquo; column should be called, and its own website to download it from.</p>
+                <p>A company shopping for a power contract in Jiangsu has no easy way to ask the obvious question — <em>is this a good price compared to Shandong?</em> — because answering it means twelve downloads, twelve cleanups, and a judgment call about whether you are even comparing the same product.</p>
+
+                <h4>1. One dataset out of fourteen</h4>
+                <p>I normalized every provincial feed into a single schema:</p>
+                <pre><code>node_name, running_date, running_time, price</code></pre>
+                <p>That sounds trivial until you meet the source files. Some provinces publish 15-minute intervals, others hourly. Some ship XLSX with merged header cells, some CSV with a BOM, some a PDF. Several use <code>-999</code> as a missing-value sentinel that will quietly destroy any average you compute over it.</p>
+
+                <h4>2. Nodal prices that name a real place</h4>
+                <p>Guangdong publishes prices at the <strong>node</strong> level — thousands of substation identifiers. Useful to a trader, meaningless to the factory manager who just wants to know what <em>their</em> electricity costs. I built a node-to-city mapping, using pinyin normalization to match inconsistent naming across the feed.</p>
+
+                <h4>3. An interactive tool, not a one-off chart</h4>
+                <p>The analysis had to outlive me, so I wrote it as a Streamlit application rather than a notebook:</p>
+                <ul>
+                  <li>Upload one or more price CSVs; the app infers day-ahead vs. real-time from the filename.</li>
+                  <li>Upload both and it charts the <strong>spread</strong> — the number that tells you whether a retailer&rsquo;s forecasting is any good.</li>
+                  <li>Search and select nodes in the sidebar; every chart follows the selection.</li>
+                  <li>Export a <strong>standalone HTML report</strong> — one file, opens offline, no Python needed on the other end.</li>
+                </ul>
+                <p>DuckDB does the aggregation in-process, so filtering millions of interval rows stays responsive without standing up a database server. Results are cached by content hash, so re-uploading the same file is instant.</p>
+
+                <h4>4. Transmission tariffs: 3rd vs. 4th cycle</h4>
+                <p>Spot price is only part of what a customer pays. I compared the two tariff schedules province by province and voltage level by voltage level, to show where delivered cost actually moves — which is not always in the direction the headline number suggests.</p>
+
+                <h4>What I took away</h4>
+                <ul>
+                  <li><strong>The cleaning <em>is</em> the analysis.</strong> Roughly 70% of the work was reconciling formats and hunting sentinel values. The chart at the end was the easy part.</li>
+                  <li><strong>Build the tool, not the answer.</strong> My first week produced charts. They were obsolete the moment new data landed. The app was still in use after I left.</li>
+                  <li><strong>Domain knowledge is not optional.</strong> You cannot spot a wrong number in a price series until you understand why day-ahead and real-time diverge, and how settlement actually works.</li>
+                </ul>
+
+                <div class="callout">
+                  <p><strong>On confidentiality.</strong> This project used a client&rsquo;s interval load data for dozens of industrial facilities. None of it — and no customer name — appears here. Methodology and tool design are mine.</p>
+                </div>
+
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <!-- ---------- P2 ---------- -->
+        <article class="proj">
+          <div class="proj-meta">
+            <span class="badge">Independent analysis</span>
+            <span class="proj-org">91 project entries</span>
+          </div>
+          <div class="proj-body">
+            <h3>Solar Resource &amp; Inter-Annual Risk for Distributed PV</h3>
+            <p class="proj-hook">The sun is not the same every year. A twenty-year solar contract is usually priced as if it were.</p>
+            <ul class="proj-points">
+              <li>Pulled <strong>26 years of NASA POWER daily irradiance</strong> (2000&ndash;2026) for 77 industrial rooftop sites — global horizontal, direct normal and diffuse components.</li>
+              <li>Computed a <strong>good-year / bad-year coefficient</strong> for each site — and found a <strong>15-point spread</strong> across the portfolio. Two sites financed on identical assumptions can differ by that much in realized resource in a single year.</li>
+              <li>Audited all 91 project entries against independent geocoding: <strong>42 of them — 46% — were wrong or unverifiable</strong>, including two sites logged over 1,100&nbsp;km from their real location.</li>
+              <li>Benchmarked Yangtze River Delta capitals (Shanghai, Nanjing, Hangzhou, Hefei) on irradiance mix to show why identical panels earn different returns 200&nbsp;km apart.</li>
+            </ul>
+            <ul class="tags tags-stack">
+              <li>Python</li><li>NASA POWER API</li><li>Excel</li><li>Geospatial QA</li>
+            </ul>
+
+            <details class="case">
+              <summary>Read the full case study</summary>
+              <div class="case-body">
+
+                <h4>The question</h4>
+                <p>A rooftop solar developer signs a power purchase agreement that runs for two decades. The financial model behind it rests on one number: how much sunlight the roof will receive. That number is almost always a long-run average.</p>
+                <p>But no individual year <em>is</em> the average. A cloudy year underproduces, the revenue misses the model, and the person explaining it to a lender discovers that &ldquo;average&rdquo; was never a promise. I wanted to put a number on that gap.</p>
+
+                <h4>1. Twenty-six years of irradiance</h4>
+                <p>I pulled daily surface irradiance from NASA&rsquo;s POWER API for every project site — 1 January 2000 through mid-2026 — capturing three parameters rather than one:</p>
+                <div class="table-scroll">
+                  <table>
+                    <thead><tr><th>Parameter</th><th>What it is</th><th>Why it matters</th></tr></thead>
+                    <tbody>
+                      <tr><td>ALLSKY_SFC_SW_DWN</td><td>Global horizontal</td><td>Baseline yield for a flat rooftop array</td></tr>
+                      <tr><td>ALLSKY_SFC_SW_DNI</td><td>Direct normal</td><td>Drives tilt and tracking gains</td></tr>
+                      <tr><td>ALLSKY_SFC_SW_DIFF</td><td>Diffuse</td><td>Sets the floor on overcast days</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p>The raw files arrive with a fourteen-line header block and <code>-999</code> standing in for missing observations. Averaging over that sentinel without stripping it first produces a confidently wrong answer — exactly the kind of error that survives into a financial model unnoticed.</p>
+
+                <h4>2. A good-year / bad-year coefficient per site</h4>
+                <p>For 77 sites I computed the ratio of a given year&rsquo;s irradiance to the long-run mean — a direct multiplier on expected generation:</p>
+                <div class="table-scroll">
+                  <table>
+                    <thead><tr><th>Window</th><th>Min</th><th>Mean</th><th>Max</th><th>Spread</th></tr></thead>
+                    <tbody>
+                      <tr><td>Calendar 2025</td><td>0.971</td><td>1.071</td><td>1.124</td><td>15.3 pts</td></tr>
+                      <tr><td>Jun 2025 &ndash; May 2026</td><td>0.975</td><td>1.031</td><td>1.093</td><td>11.8 pts</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p>The useful finding is the <strong>spread, not the mean</strong>. If your model treats two sites identically, you have quietly mispriced one of them.</p>
+
+                <h4>3. The coordinate audit</h4>
+                <p>Before any of that means anything, the latitude and longitude have to be right — irradiance is pulled <em>by coordinate</em>. So I checked all 91 project entries against independent geocoding and each facility&rsquo;s registered address, logging a deviation in kilometers and a written justification for every one.</p>
+
+                <div class="callout">
+                  <p><strong>42 of 91 entries — 46% — did not survive the check.</strong> 36 were outright wrong, 4 could not be verified, 2 were off by a small but non-trivial margin.</p>
+                </div>
+
+                <div class="table-scroll">
+                  <table>
+                    <thead><tr><th>Site</th><th>Recorded</th><th>Actual</th><th>Error</th></tr></thead>
+                    <tbody>
+                      <tr><td>Glass manufacturer</td><td>Dongguan, Guangdong</td><td>Huangdao, Shandong</td><td><strong>1,585 km</strong></td></tr>
+                      <tr><td>Machinery group</td><td>Wrong province</td><td>Chongqing</td><td><strong>1,160 km</strong></td></tr>
+                      <tr><td>Heavy industry</td><td>Off-site</td><td>Anhui</td><td>290 km</td></tr>
+                      <tr><td>Sanitaryware</td><td>Off-site</td><td>Hebei</td><td>152 km</td></tr>
+                      <tr><td>Auto parts</td><td>Off-site</td><td>Hebei</td><td>114 km</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p>The 1,585 km case is the one I think about. Nothing about the spreadsheet looked broken — it was a valid latitude and a valid longitude, formatted correctly, sitting quietly in the right column. Had it gone unchecked, that site&rsquo;s twenty-year model would have been built on subtropical southern-China sunlight for a plant that sits well to the north. Every downstream number would have been wrong, and wrong in the optimistic direction.</p>
+
+                <h4>What I took away</h4>
+                <ul>
+                  <li><strong>Validate the inputs before you model them.</strong> The most valuable output was not a coefficient. It was a list of 42 rows that needed fixing.</li>
+                  <li><strong>Plausible-looking data is the dangerous kind.</strong> A malformed coordinate gets caught. A well-formed wrong one gets used.</li>
+                  <li><strong>Show the uncertainty, don&rsquo;t average it away.</strong> A single expected value hides the range a lender actually cares about.</li>
+                </ul>
+
+              </div>
+            </details>
+          </div>
+        </article>
+
+        <!-- ---------- P3 ---------- -->
+        <article class="proj">
+          <div class="proj-meta">
+            <span class="badge">Personal project</span>
+            <span class="proj-org">~1,300 lines of Python</span>
+          </div>
+          <div class="proj-body">
+            <h3>Rules-Based A-Share Trading System &amp; Backtester</h3>
+            <p class="proj-hook">A written trading ruleset, compiled into code that enforces it — so the backtest and the live scan can never disagree.</p>
+            <ul class="proj-points">
+              <li>Codified a written ruleset into executable form: index-level regime filter, trend and base-structure tests, and a breakout trigger requiring <strong>volume confirmation</strong>.</li>
+              <li>Position sizing derived from <strong>2% account risk &divide; stop distance</strong>, a 30% single-name cap, and a market-breadth gate that shrinks total exposure when few stocks qualify.</li>
+              <li>Built a full-market scanner and a <strong>backtester over 2020&ndash;present</strong> that execute the <em>same</em> rule code — so the historical result reflects what the system would actually have done.</li>
+              <li><strong>Zero third-party dependencies.</strong> Concurrent fetching plus a local price cache means a full-market rerun finishes in seconds.</li>
+            </ul>
+            <ul class="tags tags-stack">
+              <li>Python (standard library only)</li><li>ThreadPoolExecutor</li><li>REST APIs</li><li>Backtesting</li>
+            </ul>
+            <p class="proj-note">Research and programming project. Not investment advice, and no performance claims are made.</p>
+
+            <details class="case">
+              <summary>Read the full case study</summary>
+              <div class="case-body">
+
+                <h4>The design goal</h4>
+                <p>Discretionary trading fails in a predictable place: the exit. An entry can be reasoned about calmly in advance; an exit gets negotiated in the moment, against yourself, with money on the line. So I built a <strong>constraint engine</strong> rather than a prediction engine. The point is to remove the moment where negotiation is possible.</p>
+
+                <h4>The ruleset, made executable</h4>
+                <p>The system is a written document (now at v0.3) translated clause by clause into testable conditions:</p>
+                <ul>
+                  <li><strong>Gate 0 — market regime.</strong> If the CSI 300 closes below its own 60-day moving average, no new positions open at all. Not smaller ones. None.</li>
+                  <li><strong>Gate 1 — trend.</strong> Price above its 60-day moving average, and that average itself rising.</li>
+                  <li><strong>Gate 2 — structure.</strong> A genuine base: closing-price range over the prior 30 sessions within 25%, and price near the 60-day high.</li>
+                  <li><strong>Gate 3 — trigger.</strong> A close at a new 60-day high on volume at least 1.5&times; the 20-day average, and no more than 5% above the base&rsquo;s upper edge — a hard stop on chasing.</li>
+                </ul>
+
+                <h4>Sizing — risk first</h4>
+                <pre><code>shares = (account × 2% risk) ÷ (entry − stop)
+
+constraints:
+  single position   ≤ 30% of account
+  concurrent holds  ≤ 4
+  breadth gate      pass rate &lt; 3%  → max 30% invested
+                    pass rate &lt; 10% → max 60% invested</code></pre>
+                <p>Position size is a function of where the stop sits, not of how much I like the idea — a wide stop automatically buys fewer shares. The <strong>breadth gate</strong> is the part I am most pleased with: the scanner already knows how many stocks in the whole market pass the filter, and that pass rate is itself a market-health signal. Few qualifiers means a thin market, so the system caps its own exposure without me deciding anything.</p>
+
+                <h4>Exits</h4>
+                <ul>
+                  <li><strong>Initial stop:</strong> the higher of the base&rsquo;s upper edge &times; 0.98 and the breakout day&rsquo;s low.</li>
+                  <li><strong>Confirmation:</strong> stops trigger on <em>closing</em> price, not intraday spikes.</li>
+                  <li><strong>Trailing:</strong> once up 15%, the stop switches to a 20-day moving-average trail.</li>
+                  <li><strong>Adding:</strong> only into strength — up 10% and making a new high — at half size, stop moved to breakeven.</li>
+                </ul>
+
+                <h4>Two programs, one rule engine</h4>
+                <p>This is the design decision I would defend hardest. The scanner and the backtester are not separate implementations that happen to agree — they run the same rule code.</p>
+                <ul>
+                  <li><strong>Full-market scanner.</strong> Pages through every A-share by market cap, drops anything under &yen;10bn or flagged ST, applies the gates, and returns three buckets: triggered, watchlist, and broken-below-20-day. It also reports the pass rate feeding the breadth gate.</li>
+                  <li><strong>Backtester.</strong> Replays 2020 to present on adjusted daily bars, simulating the same gates, sizing, stops and adds, with transaction costs baked into fill prices.</li>
+                </ul>
+                <p>A backtest that uses looser logic than the live scanner is a backtest of a strategy you will never run. Sharing the engine is what keeps the result honest.</p>
+
+                <h4>Engineering notes</h4>
+                <ul>
+                  <li><strong>No third-party packages.</strong> Standard library only — <code>urllib</code>, <code>json</code>, <code>collections</code>, <code>concurrent.futures</code>. Runs on any machine with Python 3 and nothing installed. That constraint was deliberate: it forced me to understand what a library would have hidden.</li>
+                  <li><strong>Concurrency and caching.</strong> A <code>ThreadPoolExecutor</code> fans out price requests; every series is cached to disk on first fetch. First run takes minutes, every rerun takes seconds.</li>
+                  <li><strong>Resilience.</strong> Retry with backoff, GBK decoding for the Chinese feeds, and rotation across several API mirrors, because a free data endpoint will rate-limit you halfway through 5,000 symbols.</li>
+                  <li><strong>A trade journal.</strong> Every position logged with its thesis, its stop, the indicator that would falsify it, the outcome, and one column that matters more than the rest: <em>was this inside the system, yes or no?</em></li>
+                </ul>
+
+                <h4>What I took away</h4>
+                <ul>
+                  <li><strong>Writing the rule down is most of the work.</strong> Turning &ldquo;cut losses quickly&rdquo; into a condition a computer can evaluate forces you to state precisely what you meant.</li>
+                  <li><strong>Sizing beats selection.</strong> Tying position size to stop distance moved outcomes more than any refinement to the entry criteria did.</li>
+                  <li><strong>An executable rule is a testable rule.</strong> Once the logic is code, you can ask the historical record whether it actually worked — and get an answer you did not choose.</li>
+                </ul>
+
+              </div>
+            </details>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="num">03</span>
+        <h2>Get in touch</h2>
+      </div>
+      <p class="lede contact-lede">
+        I&rsquo;m looking for <strong>Summer 2027 analytics internships</strong> — energy, supply chain,
+        or anywhere a business decision is waiting on a number somebody hasn&rsquo;t checked yet.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="mailto:hueddie7@gmail.com">hueddie7@gmail.com</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download résumé (PDF)</a>
+        <a class="btn" href="https://www.linkedin.com/in/yuchen-hu-18a055380" target="_blank" rel="noopener">linkedin.com/in/yuchen-hu</a>
+        <a class="btn" href="https://github.com/Eddie-Hu222" target="_blank" rel="noopener">github.com/Eddie-Hu222</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <p>&copy; 2026 Yuchen Hu</p>
+    <p>Hand-written HTML &amp; CSS. Hosted on GitHub Pages.</p>
+  </div>
+</footer>
+
+</body>
+</html>
